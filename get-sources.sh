@@ -10,11 +10,13 @@ SOURCE_PAGE='/uczelnia/informacje-ogolne/materialy-promocyjne/logotyp'
 WORKSPACE=$(mktemp --directory --tmpdir='.' tmp.sources.XXXXX)
 OUTPUT_DIR='template-PWr'
 
+MYSZKA_URL='https://kmim.wm.pwr.edu.pl/myszka/logotyp/nowy_szablon_maly.tar.xz'
+
 
 #
 # Check required binaries are available
 #
-TOOLS=( curl loffice unzip )
+TOOLS=( curl loffice unzip tar xz )
 
 for TOOL in "${TOOLS[@]}"; do
     if ! ( command -v "${TOOL}" &> /dev/null ); then
@@ -66,20 +68,37 @@ popd
 
 
 #
+# Fetch better HR excellence icon
+#
+pushd "${WORKSPACE}"
+
+MYSZKA_NAME=$(basename "${MYSZKA_URL}")
+
+if ! [ -f "${MYSZKA_NAME}" ]; then
+    curl -LJO "${MYSZKA_URL}"
+fi
+
+tar --extract --file "${MYSZKA_NAME}" --verbose 'tex/latex/pwr/'
+
+popd
+
+
+#
 # Save the background files
 #
 mkdir -p "${OUTPUT_DIR}"
 
 cp "${WORKSPACE}/prezentacja_v1_2017-03_pl/ppt/media/image1.png" "${OUTPUT_DIR}/title-v1-pl.png"
-cp "${WORKSPACE}/prezentacja_v1_2017-03_pl/ppt/media/image2.png" "${OUTPUT_DIR}/hr-excellence-v1.png"
 cp "${WORKSPACE}/prezentacja_v1_2017-03_pl/ppt/media/image7.png" "${OUTPUT_DIR}/content-v1-pl.png"
 
 cp "${WORKSPACE}/prezentacja_v1_2017-03_en/ppt/media/image1.png" "${OUTPUT_DIR}/title-v1-en.png"
 cp "${WORKSPACE}/prezentacja_v1_2017-03_en/ppt/media/image7.png" "${OUTPUT_DIR}/content-v1-en.png"
 
 cp "${WORKSPACE}/prezentacja_v2_2017-03_pl/ppt/media/image1.png" "${OUTPUT_DIR}/title-v2-pl.png"
-cp "${WORKSPACE}/prezentacja_v2_2017-03_pl/ppt/media/image2.png" "${OUTPUT_DIR}/hr-excellence-v2.png"
 cp "${WORKSPACE}/prezentacja_v2_2017-03_pl/ppt/media/image5.png" "${OUTPUT_DIR}/content-v2-pl.png"
 
 cp "${WORKSPACE}/prezentacja_v2_2017-03_en/ppt/media/image1.png" "${OUTPUT_DIR}/title-v2-en.png"
 cp "${WORKSPACE}/prezentacja_v2_2017-03_en/ppt/media/image5.png" "${OUTPUT_DIR}/content-v2-en.png"
+
+cp "${WORKSPACE}/tex/latex/pwr/Hr_p1.pdf" "${OUTPUT_DIR}/hr-excellence-v1.pdf"
+cp "${WORKSPACE}/tex/latex/pwr/Hr_p2.pdf" "${OUTPUT_DIR}/hr-excellence-v2.pdf"

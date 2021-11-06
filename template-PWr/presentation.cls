@@ -193,7 +193,7 @@
 
             \vspace{\paperheight}
             \vspace{-0.1\paperwidth}
-            \includegraphics[width=0.12\paperwidth]{template-PWr/hr-excellence-\PWrThemeVersion.png}
+            \includegraphics[width=0.12\paperwidth]{template-PWr/hr-excellence-\PWrThemeVersion.pdf}
         \end{column}
         \begin{column}{0.86\paperwidth}
             \begin{beamercolorbox}[sep=1.0em,center]{title}
