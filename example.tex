@@ -1,0 +1,60 @@
+\documentclass[4:3,pl,v2]{template-PWr/presentation}
+
+%
+% Metadata
+%
+\title{Tytuł}
+\subtitle{Podtytuł}
+\author{Autor}
+\contact{Kontakt}
+\institute{Jednostka}
+\date{\today}
+\keywords{Słowa kluczowe; Oddzielone średnikami}
+\subject{Krótkie omówienie zawartości}
+
+
+%
+% Content
+%
+\begin{document}
+    \begin{frame}
+        \setstretch{1.5}
+
+        \titlepage{}
+    \end{frame}
+
+
+    \begin{frame}
+        \frametitle{Przykładowa treść}
+        \setstretch{1.25}
+        \footnotesize
+
+        \begin{itemize}
+            \setlength{\itemsep}{0.5em}
+            \item Zawartość domyślnie jest wyśrodkowana w pionie.
+            \item Listy dobrze się sprawdzają przy definiowaniu treści.
+            \item Zagnieżdżanie list jest jak najbardziej możliwe.
+                  \begin{itemize}
+                      \item[--] A nawet na więcej niż jeden poziom!
+                                \begin{itemize}
+                                    \item[-] Można określić własny styl wypunktowania.
+                                \end{itemize}
+                  \end{itemize}
+        \end{itemize}
+
+        \vfill
+
+        \begin{enumerate}
+            \setlength{\itemsep}{0.5em}
+            \item Zawartość domyślnie jest wyśrodkowana w pionie.
+            \item Listy dobrze się sprawdzają przy definiowaniu treści.
+            \item Zagnieżdżanie list jest jak najbardziej możliwe.
+                  \begin{enumerate}
+                      \item A nawet na więcej niż jeden poziom!
+                            \begin{enumerate}
+                                \item Można określić własny styl wypunktowania.
+                            \end{enumerate}
+                  \end{enumerate}
+        \end{enumerate}
+    \end{frame}
+\end{document}
